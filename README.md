@@ -216,4 +216,54 @@ X-Api-Key: your_api_key
   "status": 422,
   "type": "yii\\web\\HttpException"
 }
-```  
+```
+
+
+## Изменение активности кабинета (врача)
+
+## PUT `/api/erp/room/{erp_employee_id}/change-active`
+
+Изменяет статус активности врача, используя `erp_employee_id`.
+
+Обязательный параметр:
+
+- `is_deleted` (integer)    0 — кабинет активен; 1 — кабинет деактивирован
+
+Тело запроса (JSON):
+
+    {
+      "is_deleted": 1
+    }
+
+Ответ:
+```json
+    {
+  "status": 200,
+  "data": {
+    "id": 46,
+    "office_id": 3,
+    "erp_employee_id": 321,
+    "name": "Иванов Иван Иванович",
+    "fio": "Иванов Иван Иванович",
+    "specialty_id": 8,
+    "comment": "коммент",
+    "min_time": "09:00:00",
+    "max_time": "18:00:00",
+    "grid_pitch": 30,
+    "grid_pitch_alternative": null,
+    "bot_enable": 1,
+    "user_id_attached": null,
+    "user_id": null,
+    "created_by": 2,
+    "created_at": "2025-04-17 10:05:12",
+    "is_deleted": 1
+  }
+}
+```
+Ошибки:
+
+- `400 Bad Request` — если не передан параметр `is_deleted`.
+- `404 Not Found` — если кабинет не найден по `erp_employee_id`.
+
+
+
