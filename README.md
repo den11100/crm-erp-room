@@ -17,10 +17,6 @@ X-Api-Key: {your_api_key}
 ## Получить информацию о кабинете/враче по его ID из ERP.  
 ## GET /api/erp/room/{erp_employee_id}  
 
-
-### Параметры 
- `erp_employee_id` 
-
 ### Пример запроса  
 ```http
 GET /api/erp/room/491
@@ -65,31 +61,44 @@ X-Api-Key: your_api_key
 }
 ```  
 
-## Создать новый кабинет/врача.  
-## POST /api/erp/room  
+## Создать новый кабинет/врача.
+## POST /api/erp/room
 
+### Тело запроса (JSON)
 
-### Тело запроса (JSON)  
-| Поле               | Обязат. | Тип     | Описание                                       |
-|--------------------|---------|---------|------------------------------------------------|
-| `erp_employee_id`  | Да      | int     | ID врача/кабинета в ERP                        |
-| `name`             | Да      | string  | Название кабинета или ФИО врача                |
-| `specialty_id`     | Да      | int     | ID специальности (для ProDoctorov)             |
-| `erp_medoffice_id` | Да      | int     | ID медофиса в ERP (для вычисления `office_id`) |
+| Поле                       | Обязат. | Тип    | Описание                                                              |
+|---------------------------|---------|--------|-----------------------------------------------------------------------|
+| `erp_employee_id`         | Да      | int    | ID врача/кабинета в ERP                                               |
+| `name`                    | Да      | string | Название кабинета или ФИО врача                                       |
+| `specialty_id`            | Да      | int    | ID специальности (для ProDoctorov)                                    |
+| `erp_medoffice_id`        | Да      | int    | ID медофиса в ERP (для вычисления `office_id`)                        |
+| `title`                   | Нет     | string | Заголовок (ФИО, Должность, Специализация, Регалии) (из ERP)          |
+| `achievements`            | Нет     | string | Достижения (из ERP)                                                   |
+| `education`               | Нет     | string | Образование (из ERP)                                                  |
+| `experience`              | Нет     | string | Опыт (из ERP)                                                         |
+| `hide_profession_in_title`| Нет     | int    | Скрыть профессию в заголовке (из ERP)                                |
 
-### Пример запроса  
+### Пример запроса
 ```http
 POST /api/erp/room
 Content-Type: application/json
 X-Api-Key: your_api_key
+```
 
+```json
 {
   "erp_employee_id": 321,
   "name": "Иванов Иван Иванович",
   "specialty_id": 5,
-  "erp_medoffice_id": 10
+  "erp_medoffice_id": 10,
+  "title": "Иванов Иван Иванович, Врач-кардиолог",
+  "achievements": "Кандидат медицинских наук",
+  "education": "Первый МГМУ им. Сеченова",
+  "experience": "10 лет",
+  "hide_profession_in_title": 1
 }
 ```
+
 
 ### Пример успешного ответа 200  
 ```json
@@ -112,7 +121,13 @@ X-Api-Key: your_api_key
     "user_id": null,
     "created_by": 2,
     "created_at": "2025-04-17 10:05:12",
-    "is_deleted": 0
+    "is_deleted": 0, 
+    "erp_medoffice_id": 10,
+    "title": "Иванов Иван Иванович, Врач-кардиолог",
+    "achievements": "Кандидат медицинских наук",
+    "education": "Первый МГМУ им. Сеченова",
+    "experience": "10 лет",
+    "hide_profession_in_title": 1
   }
 }
 ```
@@ -150,15 +165,17 @@ X-Api-Key: your_api_key
 ## PUT /api/erp/room/{erp_employee_id}  
 
 
-### Параметры
- `erp_employee_id`
-
 ### Тело запроса (JSON)  
-| Поле               | Обязат. | Тип     | Описание                                       |
-|--------------------|---------|---------|------------------------------------------------|
-| `name`             | Нет     | string  | ФИО врача           |
-| `specialty_id`     | Нет     | int     | Новый ID специальности                          |
-| `erp_medoffice_id` | Нет     | int     | Новый ID медофиса в ERP (пересчёт `office_id`)  |
+| Поле                      | Обязат. | Тип     | Описание                                       |
+|---------------------------|---------|---------|------------------------------------------------|
+| `name`                    | Нет     | string  | ФИО врача           |
+| `specialty_id`            | Нет     | int     | Новый ID специальности                          |
+| `erp_medoffice_id`        | Нет     | int     | Новый ID медофиса в ERP (пересчёт `office_id`)  |
+| `title`                   | Нет     | string  | Заголовок (ФИО, Должность, Специализация, Регалии) (из ERP)          |
+| `achievements`            | Нет     | string  | Достижения (из ERP)                                                   |
+| `education`               | Нет     | string  | Образование (из ERP)                                                  |
+| `experience`              | Нет     | string  | Опыт (из ERP)                                                         |
+| `hide_profession_in_title`| Нет     | int     | Скрыть профессию в заголовке (из ERP)                                |
 
 ### Пример запроса  
 ```http
@@ -168,7 +185,8 @@ X-Api-Key: your_api_key
 
 {
   "name": "Иванов Иван Иванович",
-  "specialty_id": 8
+  "specialty_id": 8,
+  "experience": "10 лет"
 }
 ```
 
@@ -193,7 +211,13 @@ X-Api-Key: your_api_key
     "user_id": null,
     "created_by": 2,
     "created_at": "2025-04-17 10:05:12",
-    "is_deleted": 0
+    "is_deleted": 0,
+    "erp_medoffice_id": 10,
+    "title": "Иванов Иван Иванович, Врач-кардиолог",
+    "achievements": "Кандидат медицинских наук",
+    "education": "Первый МГМУ им. Сеченова",
+    "experience": "10 лет",
+    "hide_profession_in_title": 1
   }
 }
 ```
@@ -256,7 +280,13 @@ X-Api-Key: your_api_key
     "user_id": null,
     "created_by": 2,
     "created_at": "2025-04-17 10:05:12",
-    "is_deleted": 1
+    "is_deleted": 1,
+    "erp_medoffice_id": 10,
+    "title": "Иванов Иван Иванович, Врач-кардиолог",
+    "achievements": "Кандидат медицинских наук",
+    "education": "Первый МГМУ им. Сеченова",
+    "experience": "10 лет",
+    "hide_profession_in_title": 1
   }
 }
 ```
