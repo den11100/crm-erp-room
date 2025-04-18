@@ -14,8 +14,8 @@ X-Api-Key: {your_api_key}
 ```  
 
 
-## Получить информацию о кабинете/враче по его ID из ERP.  
-## GET /api/erp/room/{erp_employee_id}  
+## Получить информацию о Враче по его ID из ERP.  
+## GET /api/erp/room/{erp_employee_doctor_id}  
 
 ### Пример запроса  
 ```http
@@ -51,7 +51,8 @@ X-Api-Key: your_api_key
     "achievements": "Кандидат медицинских наук",
     "education": "Первый МГМУ им. Сеченова",
     "experience": "10 лет",
-    "hide_profession_in_title": 1
+    "hide_profession_in_title": 1,
+    "erp_employee_doctor_id": 2, 
   }
 }
 ```
@@ -72,17 +73,18 @@ X-Api-Key: your_api_key
 
 ### Тело запроса (JSON)
 
-| Поле                       | Обязат. | Тип    | Описание                                                              |
+| Поле                      | Обязат. | Тип    | Описание                                                             |
 |---------------------------|---------|--------|-----------------------------------------------------------------------|
-| `erp_employee_id`         | Да      | int    | ID врача/кабинета в ERP                                               |
+| `erp_employee_doctor_id`  | Да      | int    | ERP  erp.employee_doctor.id                                           |
+| `erp_employee_id`         | Да      | int    | ERP  erp.employee.id                                                  |
 | `name`                    | Да      | string | Название кабинета или ФИО врача                                       |
 | `specialty_id`            | Да      | int    | ID специальности (для ProDoctorov)                                    |
 | `erp_medoffice_id`        | Да      | int    | ID медофиса в ERP (для вычисления `office_id`)                        |
-| `title`                   | Нет     | string | Заголовок (ФИО, Должность, Специализация, Регалии) (из ERP)          |
+| `title`                   | Нет     | string | Заголовок (ФИО, Должность, Специализация, Регалии) (из ERP)           |
 | `achievements`            | Нет     | string | Достижения (из ERP)                                                   |
 | `education`               | Нет     | string | Образование (из ERP)                                                  |
 | `experience`              | Нет     | string | Опыт (из ERP)                                                         |
-| `hide_profession_in_title`| Нет     | int    | Скрыть профессию в заголовке (из ERP)                                |
+| `hide_profession_in_title`| Нет     | int    | Скрыть профессию в заголовке (из ERP)                                 |
 
 ### Пример запроса
 ```http
@@ -93,6 +95,7 @@ X-Api-Key: your_api_key
 
 ```json
 {
+  "erp_employee_doctor_id": 3,
   "erp_employee_id": 321,
   "name": "Иванов Иван Иванович",
   "specialty_id": 5,
