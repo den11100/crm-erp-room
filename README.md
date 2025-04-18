@@ -45,7 +45,13 @@ X-Api-Key: your_api_key
     "created_by": 2,
     "created_at": "2024-08-15 14:23:00",
     "is_deleted": 0,
-    "erp_employee_id": 491
+    "erp_employee_id": 491,
+    "erp_medoffice_id": 10,
+    "title": "Иванов Иван Иванович, Врач-кардиолог",
+    "achievements": "Кандидат медицинских наук",
+    "education": "Первый МГМУ им. Сеченова",
+    "experience": "10 лет",
+    "hide_profession_in_title": 1
   }
 }
 ```
