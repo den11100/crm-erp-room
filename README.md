@@ -68,7 +68,7 @@ X-Api-Key: your_api_key
 }
 ```  
 
-## Создать новый кабинет/врача.
+## Создать нового Врача.
 ## POST /api/erp/room
 
 ### Тело запроса (JSON)
@@ -136,7 +136,8 @@ X-Api-Key: your_api_key
     "achievements": "Кандидат медицинских наук",
     "education": "Первый МГМУ им. Сеченова",
     "experience": "10 лет",
-    "hide_profession_in_title": 1
+    "hide_profession_in_title": 1,
+    "erp_employee_doctor_id": 2
   }
 }
 ```
@@ -170,14 +171,15 @@ X-Api-Key: your_api_key
 }
 ```  
 
-## Обновить данные существующего врача по его ID из ERP.  
-## PUT /api/erp/room/{erp_employee_id}  
+## Обновить данные существующего Врача по его ID из ERP.  
+## PUT /api/erp/room/{erp_employee_doctor_id}  
 
 
 ### Тело запроса (JSON)  
 | Поле                      | Обязат. | Тип     | Описание                                       |
 |---------------------------|---------|---------|------------------------------------------------|
-| `name`                    | Нет     | string  | ФИО врача           |
+| `erp_employee_id`         | Нет     | int     | ERP  erp.employee.id                           |
+| `name`                    | Нет     | string  | ФИО врача                                      |
 | `specialty_id`            | Нет     | int     | Новый ID специальности                          |
 | `erp_medoffice_id`        | Нет     | int     | Новый ID медофиса в ERP (пересчёт `office_id`)  |
 | `title`                   | Нет     | string  | Заголовок (ФИО, Должность, Специализация, Регалии) (из ERP)          |
@@ -226,7 +228,8 @@ X-Api-Key: your_api_key
     "achievements": "Кандидат медицинских наук",
     "education": "Первый МГМУ им. Сеченова",
     "experience": "10 лет",
-    "hide_profession_in_title": 1
+    "hide_profession_in_title": 1,
+    "erp_employee_doctor_id": 2
   }
 }
 ```
@@ -252,15 +255,15 @@ X-Api-Key: your_api_key
 ```
 
 
-## Изменение активности кабинета (врача)
+## Изменение активности Врача
 
-## PUT `/api/erp/room/{erp_employee_id}/change-active`
+## PUT `/api/erp/room/{erp_employee_doctor_id}/change-active`
 
-Изменяет статус активности врача, используя `erp_employee_id`.
+Изменяет статус активности врача, используя `erp_employee_doctor_id`.
 
 Обязательный параметр:
 
-- `is_deleted` (integer)    0 — кабинет активен; 1 — кабинет деактивирован
+- `is_deleted` (integer)    0 — врач активен; 1 — врач деактивирован
 
 Тело запроса (JSON):
 
@@ -295,14 +298,15 @@ X-Api-Key: your_api_key
     "achievements": "Кандидат медицинских наук",
     "education": "Первый МГМУ им. Сеченова",
     "experience": "10 лет",
-    "hide_profession_in_title": 1
+    "hide_profession_in_title": 1,
+    "erp_employee_doctor_id": 2
   }
 }
 ```
 Ошибки:
 
 - `400 Bad Request` — если не передан параметр `is_deleted`.
-- `404 Not Found` — если кабинет не найден по `erp_employee_id`.
+- `404 Not Found` — если Врач не найден по `erp_employee_doctor_id`.
 
 
 
