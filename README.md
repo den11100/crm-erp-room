@@ -52,7 +52,9 @@ X-Api-Key: your_api_key
     "education": "Первый МГМУ им. Сеченова",
     "experience": "10 лет",
     "hide_profession_in_title": 1,
-    "erp_employee_doctor_id": 2, 
+    "erp_employee_doctor_id": 2,
+    "is_khabarovsk": 0,
+    "erp_analysis_ids": null
   }
 }
 ```
@@ -85,6 +87,8 @@ X-Api-Key: your_api_key
 | `education`               | Нет     | string | Образование (из ERP)                                                  |
 | `experience`              | Нет     | string | Опыт (из ERP)                                                         |
 | `hide_profession_in_title`| Нет     | int    | Скрыть профессию в заголовке (из ERP)                                 |
+| `is_khabarovsk`           | Нет     | int    | Для Хабаровска ?                                                      |
+| `erp_analysis_ids`        | Нет     | array  | erp тесты id                                                          |
 
 ### Пример запроса
 ```http
@@ -137,7 +141,9 @@ X-Api-Key: your_api_key
     "education": "Первый МГМУ им. Сеченова",
     "experience": "10 лет",
     "hide_profession_in_title": 1,
-    "erp_employee_doctor_id": 2
+    "erp_employee_doctor_id": 2,
+    "is_khabarovsk": 0,
+    "erp_analysis_ids": null
   }
 }
 ```
@@ -187,6 +193,8 @@ X-Api-Key: your_api_key
 | `education`               | Нет     | string  | Образование (из ERP)                                                  |
 | `experience`              | Нет     | string  | Опыт (из ERP)                                                         |
 | `hide_profession_in_title`| Нет     | int     | Скрыть профессию в заголовке (из ERP)                                |
+| `is_khabarovsk`           | Нет     | int    | Для Хабаровска ?                                                      |
+| `erp_analysis_ids`        | Нет     | array  | erp тесты id                                                         
 
 ### Пример запроса  
 ```http
@@ -229,7 +237,9 @@ X-Api-Key: your_api_key
     "education": "Первый МГМУ им. Сеченова",
     "experience": "10 лет",
     "hide_profession_in_title": 1,
-    "erp_employee_doctor_id": 2
+    "erp_employee_doctor_id": 2,
+    "is_khabarovsk": 0,
+    "erp_analysis_ids": null
   }
 }
 ```
@@ -299,7 +309,9 @@ X-Api-Key: your_api_key
     "education": "Первый МГМУ им. Сеченова",
     "experience": "10 лет",
     "hide_profession_in_title": 1,
-    "erp_employee_doctor_id": 2
+    "erp_employee_doctor_id": 2,
+    "is_khabarovsk": 0,
+    "erp_analysis_ids": null
   }
 }
 ```
