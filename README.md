@@ -54,7 +54,8 @@ X-Api-Key: your_api_key
     "hide_profession_in_title": 1,
     "erp_employee_doctor_id": 2,
     "is_khabarovsk": 0,
-    "erp_analysis_ids": null
+    "erp_analysis_ids": null,
+    "accept_children": 0
   }
 }
 ```
@@ -89,6 +90,7 @@ X-Api-Key: your_api_key
 | `hide_profession_in_title`| Нет     | int    | Скрыть профессию в заголовке (из ERP)                                 |
 | `is_khabarovsk`           | Нет     | int    | Для Хабаровска ?                                                      |
 | `erp_analysis_ids`        | Нет     | array  | erp тесты id                                                          |
+| `accept_children`         | Нет     | int   | Принимает ли детей ?                                                 |
 
 ### Пример запроса
 ```http
@@ -143,7 +145,8 @@ X-Api-Key: your_api_key
     "hide_profession_in_title": 1,
     "erp_employee_doctor_id": 2,
     "is_khabarovsk": 0,
-    "erp_analysis_ids": null
+    "erp_analysis_ids": null,
+    "accept_children": 0
   }
 }
 ```
@@ -194,7 +197,8 @@ X-Api-Key: your_api_key
 | `experience`              | Нет     | string  | Опыт (из ERP)                                                         |
 | `hide_profession_in_title`| Нет     | int     | Скрыть профессию в заголовке (из ERP)                                |
 | `is_khabarovsk`           | Нет     | int    | Для Хабаровска ?                                                      |
-| `erp_analysis_ids`        | Нет     | array  | erp тесты id                                                         
+| `erp_analysis_ids`        | Нет     | array  | erp тесты id                                                         |
+| `accept_children`         | Нет     | int   | Принимает ли детей ?                                                 |
 
 ### Пример запроса  
 ```http
@@ -239,7 +243,8 @@ X-Api-Key: your_api_key
     "hide_profession_in_title": 1,
     "erp_employee_doctor_id": 2,
     "is_khabarovsk": 0,
-    "erp_analysis_ids": null
+    "erp_analysis_ids": null,
+    "accept_children": 0
   }
 }
 ```
@@ -311,7 +316,8 @@ X-Api-Key: your_api_key
     "hide_profession_in_title": 1,
     "erp_employee_doctor_id": 2,
     "is_khabarovsk": 0,
-    "erp_analysis_ids": null
+    "erp_analysis_ids": null,
+    "accept_children": 0
   }
 }
 ```
